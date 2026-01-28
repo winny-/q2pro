@@ -284,6 +284,20 @@ void Think_Weapon(edict_t *ent)
     }
 }
 
+void ib_Think_Slugs_Regen(edict_t *ent) {
+	if (ent->health < 1) {
+		return;
+        }
+	int slugidx = ITEM_INDEX(FindItem("Slugs"));
+        if (level.time >= ent->client->ib_next_slug_regen_time) {
+		if (ent->client->pers.inventory[slugidx] < ib_max_slugs->value) {
+			ent->client->pers.inventory[slugidx]++;
+                }
+		ent->client->ib_next_slug_regen_time = level.time + ib_slug_regen_time->value;
+	}
+}
+
+
 /*
 ================
 Use_Weapon

@@ -65,6 +65,10 @@ cvar_t  *bob_roll;
 
 cvar_t  *sv_cheats;
 
+cvar_t *ib_slug_regen_time;
+cvar_t *ib_max_slugs;
+cvar_t *ib_spawn_slugs;
+
 cvar_t  *flood_msgs;
 cvar_t  *flood_persecond;
 cvar_t  *flood_waitdelay;
@@ -158,6 +162,15 @@ static void InitGame(void)
 
     // obtain server features
     sv_features = gi.cvar("sv_features", NULL, 0);
+
+    // ib stuff
+    // TODO verify setting to 0 disables.
+    // TODO Ensure timer is reset when the railgun fires = no getting a quick slug if timed right
+    ib_slug_regen_time = gi.cvar("ib_slug_regen_time", "10", CVAR_SERVERINFO);
+    // TODO update all living players' max slugs on change.
+    // TODO allow negative value to set default.
+    ib_max_slugs = gi.cvar("ib_max_slugs", "5", CVAR_SERVERINFO);
+    ib_spawn_slugs = gi.cvar("ib_spawn_slugs", "3", CVAR_SERVERINFO);
 
     // enable protocol extensions if supported
     if (sv_features && (int)sv_features->value & GMF_PROTOCOL_EXTENSIONS && (int)g_protocol_extensions->value) {

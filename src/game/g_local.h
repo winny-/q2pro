@@ -530,6 +530,10 @@ extern  cvar_t  *bob_up;
 extern  cvar_t  *bob_pitch;
 extern  cvar_t  *bob_roll;
 
+extern cvar_t *ib_slug_regen_time;
+extern cvar_t *ib_max_slugs;
+extern cvar_t *ib_spawn_slugs;
+
 extern  cvar_t  *sv_cheats;
 extern  cvar_t  *maxclients;
 extern  cvar_t  *maxspectators;
@@ -600,6 +604,7 @@ void SetRespawn(edict_t *ent, float delay);
 void ChangeWeapon(edict_t *ent);
 void SpawnItem(edict_t *ent, const gitem_t *item);
 void Think_Weapon(edict_t *ent);
+void ib_Think_Slugs_Regen(edict_t *ent);
 int ArmorIndex(edict_t *ent);
 int PowerArmorType(edict_t *ent);
 const gitem_t *GetItemByIndex(int index);
@@ -952,6 +957,8 @@ struct gclient_s {
 
     edict_t     *chase_target;      // player we are chasing
     bool        update_chase;       // need to update chase info?
+
+    float       ib_next_slug_regen_time;
 };
 
 struct edict_s {

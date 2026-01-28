@@ -575,8 +575,7 @@ static void InitClientPersistant(gclient_t *client)
     item = FindItem("Railgun");
     client->pers.inventory[ITEM_INDEX(item)] = 1;
     item = FindItem("Slugs");
-    // TODO create cvar g_spawn_slugs
-    client->pers.inventory[ITEM_INDEX(item)] = 66;
+    client->pers.inventory[ITEM_INDEX(item)] = ib_spawn_slugs->value;
 
     item = FindItem("Blaster");
     client->pers.selected_item = ITEM_INDEX(item);
@@ -590,9 +589,11 @@ static void InitClientPersistant(gclient_t *client)
     client->pers.max_bullets    = 200;
     client->pers.max_shells     = 100;
     client->pers.max_rockets    = 50;
-    client->pers.max_grenades   = 50;
+    client->pers.max_grenades   = 666;
     client->pers.max_cells      = 200;
-    client->pers.max_slugs      = 50;
+    client->pers.max_slugs      = ib_max_slugs->value;
+
+    client->ib_next_slug_regen_time = level.time + ib_slug_regen_time->value;
 
     client->pers.connected = true;
 }
@@ -1669,6 +1670,10 @@ void ClientThink(edict_t *ent, usercmd_t *ucmd)
             client->weapon_thunk = true;
             Think_Weapon(ent);
         }
+    }
+
+    if (!client->resp.spectator) {
+	    ib_Think_Slugs_Regen(ent);
     }
 
     if (client->resp.spectator) {
