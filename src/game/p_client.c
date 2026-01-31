@@ -1271,6 +1271,16 @@ void ClientBegin(edict_t *ent)
 
     ent->client = game.clients + (ent - g_edicts - 1);
 
+    gi.centerprintf(ent, "\n"
+                         "Welcome to instagib blasters!\n"
+                         " ...and hand grenades\n"
+                         " ...and _limited regen_ railgun\n"
+                         "\n"
+                         "Oh my!\n"
+                         "\n"
+		         "Have fun!\n"
+	    );
+
     if (deathmatch->value) {
         ClientBeginDeathmatch(ent);
         return;
