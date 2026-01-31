@@ -784,7 +784,8 @@ static void Weapon_Blaster_Fire(edict_t *ent)
     Blaster_Fire(ent, vec3_origin, damage, false, EF_BLASTER);
     ent->client->ps.gunframe++;
 
-    if ((int)ib_blaster_hp_cost->value > 0) {
+    // TODO check dmflags against DAMAGE_NO_PROTECTION
+    if ((int)ib_blaster_hp_cost->value > 0 && ent->client->invincible_framenum <= level.framenum) {
 	ent->health -= (int)ib_blaster_hp_cost->value;
 	if (ent->health < 1) {
             meansOfDeath = MOD_NO_MORE_BLASTER_AMMO;
