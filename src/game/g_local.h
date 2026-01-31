@@ -530,6 +530,7 @@ extern  cvar_t  *bob_up;
 extern  cvar_t  *bob_pitch;
 extern  cvar_t  *bob_roll;
 
+extern cvar_t *ib_unlimited_grenades;
 extern cvar_t *ib_slug_regen_time;
 extern cvar_t *ib_max_slugs;
 extern cvar_t *ib_spawn_slugs;

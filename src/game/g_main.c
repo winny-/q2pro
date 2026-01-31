@@ -65,6 +65,7 @@ cvar_t  *bob_roll;
 
 cvar_t  *sv_cheats;
 
+cvar_t *ib_unlimited_grenades;
 cvar_t *ib_slug_regen_time;
 cvar_t *ib_max_slugs;
 cvar_t *ib_spawn_slugs;
@@ -164,6 +165,7 @@ static void InitGame(void)
     sv_features = gi.cvar("sv_features", NULL, 0);
 
     // ib stuff
+    ib_unlimited_grenades = gi.cvar("ib_unlimited_grenades", "1", CVAR_SERVERINFO);
     // TODO verify setting to 0 disables.
     // TODO Ensure timer is reset when the railgun fires = no getting a quick slug if timed right
     ib_slug_regen_time = gi.cvar("ib_slug_regen_time", "10", CVAR_SERVERINFO);
