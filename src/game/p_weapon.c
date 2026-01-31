@@ -1233,6 +1233,11 @@ static void weapon_railgun_fire(edict_t *ent)
     ent->client->ps.gunframe++;
     PlayerNoise(ent, start, PNOISE_WEAPON);
 
+    if (ent->client->pers.inventory[ent->client->ammo_index] >=
+        (int)ib_max_slugs->value) {
+        ent->client->ib_next_slug_regen_time = level.time + (float)ib_slug_regen_time->value;
+    }
+
     if (!((int)dmflags->value & DF_INFINITE_AMMO))
         ent->client->pers.inventory[ent->client->ammo_index]--;
 }

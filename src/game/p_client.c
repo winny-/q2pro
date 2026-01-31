@@ -596,7 +596,7 @@ static void InitClientPersistant(gclient_t *client)
     client->pers.max_cells      = 200;
     client->pers.max_slugs      = ib_max_slugs->value;
 
-    client->ib_next_slug_regen_time = level.time + ib_slug_regen_time->value;
+    client->ib_next_slug_regen_time = level.time + (float)ib_slug_regen_time->value;
 
     client->pers.connected = true;
 }
