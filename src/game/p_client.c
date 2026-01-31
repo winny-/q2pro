@@ -572,7 +572,7 @@ static void InitClientPersistant(gclient_t *client)
     // Give player grenades too!!!
     item = FindItem("Grenades");
     // TODO create cvar g_spawn_grenades
-    client->pers.inventory[ITEM_INDEX(item)] = 666;
+    client->pers.inventory[ITEM_INDEX(item)] = 50;
 
     // Give player a railgun too!!!
     item = FindItem("Railgun");
