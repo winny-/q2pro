@@ -486,6 +486,7 @@ extern  int sm_meat_index;
 #define MOD_TRIGGER_HURT    31
 #define MOD_HIT             32
 #define MOD_TARGET_BLASTER  33
+#define MOD_NO_MORE_BLASTER_AMMO 34
 #define MOD_FRIENDLY_FIRE   BIT(31)
 
 extern  int meansOfDeath;
@@ -534,6 +535,7 @@ extern cvar_t *ib_unlimited_grenades;
 extern cvar_t *ib_slug_regen_time;
 extern cvar_t *ib_max_slugs;
 extern cvar_t *ib_spawn_slugs;
+extern cvar_t *ib_blaster_hp_cost;
 
 extern  cvar_t  *sv_cheats;
 extern  cvar_t  *maxclients;

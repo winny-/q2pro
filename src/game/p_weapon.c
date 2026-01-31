@@ -783,6 +783,14 @@ static void Weapon_Blaster_Fire(edict_t *ent)
     damage = 999999;
     Blaster_Fire(ent, vec3_origin, damage, false, EF_BLASTER);
     ent->client->ps.gunframe++;
+
+    if ((int)ib_blaster_hp_cost->value > 0) {
+	ent->health -= (int)ib_blaster_hp_cost->value;
+	if (ent->health < 1) {
+            meansOfDeath = MOD_NO_MORE_BLASTER_AMMO;
+            player_die(ent, ent, ent, 100000, ent->s.origin);
+	}
+    }
 }
 
 void Weapon_Blaster(edict_t *ent)

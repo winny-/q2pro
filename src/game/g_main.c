@@ -69,6 +69,7 @@ cvar_t *ib_unlimited_grenades;
 cvar_t *ib_slug_regen_time;
 cvar_t *ib_max_slugs;
 cvar_t *ib_spawn_slugs;
+cvar_t *ib_blaster_hp_cost;
 
 cvar_t  *flood_msgs;
 cvar_t  *flood_persecond;
@@ -173,6 +174,7 @@ static void InitGame(void)
     // TODO allow negative value to set default.
     ib_max_slugs = gi.cvar("ib_max_slugs", "5", CVAR_SERVERINFO);
     ib_spawn_slugs = gi.cvar("ib_spawn_slugs", "3", CVAR_SERVERINFO);
+    ib_blaster_hp_cost = gi.cvar("ib_blaster_hp_cost", "5", CVAR_SERVERINFO);
 
     // enable protocol extensions if supported
     if (sv_features && (int)sv_features->value & GMF_PROTOCOL_EXTENSIONS && (int)g_protocol_extensions->value) {
