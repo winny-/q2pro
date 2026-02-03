@@ -786,7 +786,7 @@ static void Weapon_Blaster_Fire(edict_t *ent)
 
     if ((int)ib_blaster_hp_cost->value > 0) {
         // FIXME does custom death message still work?  (Says "player died" in sp.)
-        T_Damage(ent, world, world, vec3_origin, vec3_origin, vec3_origin, (int)ib_blaster_hp_cost->value, 0, 0, MOD_NO_MORE_BLASTER_AMMO);
+        T_Damage(ent, world, world, vec3_origin, vec3_origin, vec3_origin, (int)ib_blaster_hp_cost->value, 0, DAMAGE_NO_ARMOR, MOD_NO_MORE_BLASTER_AMMO);
     }
 }
 
